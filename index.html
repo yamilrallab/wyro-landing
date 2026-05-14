@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wyro — Tu dinero. Sin vueltas.</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800,900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2563FF;
+    --violet: #7B3FF2;
+    --pink: #FF4DDA;
+    --dark: #0D1220;
+    --dark2: #111827;
+    --dark3: #070C16;
+    --muted: #8899BB;
+    --border: rgba(255,255,255,0.08);
+    --card: rgba(255,255,255,0.04);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Satoshi', sans-serif; background: var(--dark); color: #fff; overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--dark3); }
+  ::-webkit-scrollbar-thumb { background: var(--violet); border-radius: 3px; }
+
+  .grad-text {
+    background: linear-gradient(90deg, var(--blue), var(--violet), var(--pink));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(90deg, var(--blue), var(--violet));
+    border: none; color: #fff; padding: 13px 26px; border-radius: 10px;
+    font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700;
+    cursor: pointer; text-decoration: none; transition: opacity .2s, transform .15s;
+  }
+  .btn-primary:hover { opacity: .9; transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; border: 1px solid rgba(255,255,255,0.2);
+    color: #fff; padding: 13px 26px; border-radius: 10px;
+    font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 600;
+    cursor: pointer; text-decoration: none; transition: background .2s, transform .15s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.06); transform: translateY(-1px); }
+  .pill-label {
+    display: inline-block; border: 1px solid rgba(123,63,242,0.45);
+    border-radius: 20px; padding: 4px 16px; font-size: 11px; color: #9B7FFF;
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px;
+  }
+  .section-title { font-size: 32px; font-weight: 800; line-height: 1.15; }
+  .section-sub { font-size: 15px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+  /* NAVBAR */
+  #navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,18,32,0.88); backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo-icon {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--blue), var(--violet), var(--pink));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 17px; color: #fff;
+  }
+  .nav-logo-text { font-size: 18px; font-weight: 800; color: #fff; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta {
+    background: linear-gradient(90deg, var(--blue), var(--violet));
+    border: none; color: #fff; padding: 10px 22px; border-radius: 8px;
+    font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700;
+    cursor: pointer; text-decoration: none; transition: opacity .2s;
+  }
+  .nav-cta:hover { opacity: .85; }
+
+  /* HERO */
+  #hero {
+    padding: 160px 60px 90px; text-align: center; position: relative; overflow: hidden;
+  }
+  .hero-glow {
+    position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 400px;
+    background: radial-gradient(ellipse at center, rgba(123,63,242,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-title {
+    font-size: clamp(28px, 8vw, 58px); font-weight: 900; line-height: 1.05; margin-bottom: 6px;
+  }
+  .hero-slogan {
+    font-size: clamp(26px, 7.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 22px;
+    white-space: nowrap;
+  }
+  .hero-slogan .blue { color: var(--blue); }
+  .hero-slogan .violet { color: var(--violet); }
+  .hero-sub { font-size: 17px; color: var(--muted); max-width: 500px; margin: 0 auto 36px; line-height: 1.65; }
+  .hero-btns { display: flex; gap: 14px; justify-content: center; margin-bottom: 56px; }
+  .metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; max-width: 640px; margin: 0 auto; }
+  .metric {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 12px; text-align: center;
+  }
+  .metric-num { font-size: 26px; font-weight: 800; }
+  .metric-lbl { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+  /* COMO FUNCIONA */
+  #como-funciona { padding: 80px 60px; background: var(--dark2); }
+  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 36px; }
+  .step {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px; transition: border-color .25s, transform .2s;
+  }
+  .step:hover { border-color: rgba(123,63,242,0.4); transform: translateY(-3px); }
+  .step-num {
+    width: 42px; height: 42px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 800; margin-bottom: 18px;
+  }
+  .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .step p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+  /* BENEFICIOS */
+  #beneficios { padding: 80px 60px; }
+  .benefits { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 36px; }
+  .benefit {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; display: flex; gap: 14px; align-items: flex-start;
+    transition: border-color .25s, transform .2s;
+  }
+  .benefit:hover { border-color: rgba(123,63,242,0.35); transform: translateY(-2px); }
+  .benefit-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px;
+  }
+  .benefit h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .benefit p { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+  /* RUBROS */
+  #rubros { padding: 80px 60px; background: var(--dark2); text-align: center; }
+  .rubros-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 28px; }
+  .rubro {
+    background: rgba(37,99,255,0.08); border: 1px solid rgba(37,99,255,0.22);
+    border-radius: 8px; padding: 10px 20px; font-size: 13px; color: #7B9FFF; font-weight: 500;
+    transition: background .2s, border-color .2s;
+  }
+  .rubro:hover { background: rgba(37,99,255,0.16); border-color: rgba(37,99,255,0.45); }
+
+  /* PRECIOS */
+  #precios { padding: 80px 60px; text-align: center; }
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 580px; margin: 36px auto 0; }
+  .plan { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+  .plan-featured {
+    background: linear-gradient(135deg,rgba(37,99,255,0.12),rgba(123,63,242,0.12));
+    border-color: rgba(123,63,242,0.35);
+  }
+  .plan-name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .plan-price { font-size: 30px; font-weight: 900; margin-bottom: 4px; }
+  .plan-desc { font-size: 12px; color: var(--muted); margin-bottom: 18px; line-height: 1.5; }
+  .plan-features { font-size: 12px; color: var(--muted); line-height: 2.2; }
+  .plan-features span { display: block; }
+  .plan-features span::before { content: "✓ "; color: var(--violet); }
+
+  /* CONTACTO */
+  #contacto { padding: 80px 60px; background: var(--dark2); text-align: center; }
+  .form-wrapper {
+    background: rgba(255,255,255,0.035); border: 1px solid var(--border);
+    border-radius: 20px; padding: 40px; max-width: 620px; margin: 0 auto;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 10px; color: var(--muted); letter-spacing: 0.8px; text-transform: uppercase; font-weight: 600; }
+  .form-group input, .form-group select {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 9px; padding: 12px 16px; font-family: 'Satoshi', sans-serif;
+    font-size: 14px; color: #fff; outline: none; transition: border-color .2s; -webkit-appearance: none;
+  }
+  .form-group input::placeholder { color: rgba(136,153,187,0.5); }
+  .form-group input:focus, .form-group select:focus { border-color: var(--violet); }
+  .form-group select option { background: #1a2235; color: #fff; }
+  .btn-submit {
+    width: 100%; background: linear-gradient(90deg, var(--blue), var(--violet));
+    border: none; color: #fff; padding: 16px; border-radius: 12px;
+    font-family: 'Satoshi', sans-serif; font-size: 16px; font-weight: 800;
+    cursor: pointer; margin-top: 8px; transition: opacity .2s, transform .15s;
+  }
+  .btn-submit:hover { opacity: .9; transform: translateY(-1px); }
+  .success-msg { display: none; text-align: center; padding: 32px; }
+  .success-msg .check {
+    width: 60px; height: 60px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--violet));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; margin: 0 auto 16px;
+  }
+  .success-msg h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+  .success-msg p { font-size: 14px; color: var(--muted); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark3); border-top: 1px solid var(--border);
+    padding: 28px 60px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo-icon {
+    width: 28px; height: 28px; border-radius: 6px;
+    background: linear-gradient(135deg, var(--blue), var(--violet));
+    display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px;
+  }
+  .footer-brand { font-size: 15px; font-weight: 800; }
+  .footer-slogan { font-size: 12px; color: var(--muted); margin-left: 8px; }
+  .footer-copy { font-size: 11px; color: var(--muted); }
+
+  /* FADE IN */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    #navbar { padding: 12px 20px; }
+    .nav-links { display: none; }
+    #hero { padding: 110px 20px 48px; }
+    .hero-title { font-size: clamp(26px, 9vw, 38px); }
+    .hero-slogan { font-size: clamp(24px, 8.5vw, 36px); white-space: nowrap; }
+    .hero-sub { font-size: 14px; }
+    .hero-btns { flex-direction: column; align-items: stretch; gap: 10px; }
+    .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+    .metrics { grid-template-columns: repeat(2,1fr); gap: 10px; max-width: 100%; }
+    .metric-num { font-size: 20px; }
+    #como-funciona, #beneficios, #rubros, #precios, #contacto { padding: 52px 20px; }
+    .section-title { font-size: 22px; }
+    .steps { grid-template-columns: 1fr; gap: 12px; }
+    .benefits { grid-template-columns: 1fr; gap: 10px; }
+    .plans { grid-template-columns: 1fr; max-width: 100%; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-wrapper { padding: 24px 16px; }
+    footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 20px; }
+    .footer-slogan { display: none; }
+  }
+
+  /* TABLET / NOTEBOOK */
+  @media (min-width: 601px) and (max-width: 1024px) {
+    #navbar { padding: 14px 36px; }
+    #hero { padding: 130px 36px 64px; }
+    #como-funciona, #beneficios, #rubros, #precios, #contacto { padding: 68px 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <img src="wyro-icon.png" alt="Wyro" style="height:34px; width:auto;"><span class="nav-logo-text">Wyro</span>
+  </a>
+  <div class="nav-links">
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#beneficios">Beneficios</a>
+    <a href="#precios">Precios</a>
+  </div>
+  <a href="#contacto" class="nav-cta">Quiero ser comercio</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="pill-label fade-up">Fintech para comercios</div>
+  <h1 class="hero-title fade-up">Potenciá tus ventas.</h1>
+  <h2 class="hero-slogan fade-up">
+    <span class="blue">Tu dinero.</span>&nbsp;<span class="violet">Sin vueltas.</span>
+  </h2>
+  <p class="hero-sub fade-up">
+    Créditos en cuotas para tu comercio. Solo con DNI.
+  </p>
+  <div class="hero-btns fade-up">
+    <a href="#contacto" class="btn-primary">Quiero ser comercio →</a>
+    <a href="#como-funciona" class="btn-outline">Ver cómo funciona</a>
+  </div>
+  <div class="metrics fade-up">
+    <div class="metric">
+      <div class="metric-num" style="color:#7B3FF2;">+500</div>
+      <div class="metric-lbl">Créditos activos</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num" style="color:#7B3FF2;">$100M+</div>
+      <div class="metric-lbl">Créditos otorgados</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num" style="color:#7B3FF2;">3–12</div>
+      <div class="metric-lbl">Cuotas disponibles</div>
+    </div>
+    <div class="metric">
+      <div class="metric-num" style="color:#7B3FF2;">100%</div>
+      <div class="metric-lbl">Digital</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div style="text-align:center;">
+    <div class="pill-label fade-up">Cómo funciona</div>
+    <h2 class="section-title fade-up">Simple para vos. Simple para tu cliente.</h2>
+  </div>
+  <div class="steps">
+    <div class="step fade-up">
+      <div class="step-num" style="background:linear-gradient(135deg,#2563FF,#7B3FF2);">1</div>
+      <h3>Registrá el cliente</h3>
+      <p>Solo necesitás el DNI. Wyro valida la identidad y asigna el límite de crédito automáticamente.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num" style="background:linear-gradient(135deg,#7B3FF2,#9B5FFF);">2</div>
+      <h3>Elegí las cuotas</h3>
+      <p>El cliente elige entre 3, 6, 9 o 12 cuotas. Vos cobrás el monto de la factura al contado.</p>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num" style="background:linear-gradient(135deg,#9B5FFF,#FF4DDA);">3</div>
+      <h3>Gestioná todo digital</h3>
+      <p>Cobranzas, rendiciones y liquidaciones desde tu panel. Sin papeles, sin visitas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section id="beneficios">
+  <div style="text-align:center;">
+    <div class="pill-label fade-up">Beneficios</div>
+    <h2 class="section-title fade-up">Todo lo que necesitás para crecer</h2>
+  </div>
+  <div class="benefits">
+    <div class="benefit fade-up">
+      <div class="benefit-icon" style="background:rgba(37,99,255,0.18);">🪪</div>
+      <div><h4>Solo con DNI</h4><p>Sin tarjeta de crédito ni cuenta bancaria</p></div>
+    </div>
+    <div class="benefit fade-up">
+      <div class="benefit-icon" style="background:rgba(123,63,242,0.18);">📱</div>
+      <div><h4>100% digital</h4><p>Gestión completa desde cualquier dispositivo</p></div>
+    </div>
+    <div class="benefit fade-up">
+      <div class="benefit-icon" style="background:rgba(255,77,218,0.18);">⚡</div>
+      <div><h4>Aprobación inmediata</h4><p>En segundos, sin esperar días</p></div>
+    </div>
+    <div class="benefit fade-up">
+      <div class="benefit-icon" style="background:rgba(37,99,255,0.18);">📊</div>
+      <div><h4>Rendiciones automáticas</h4><p>Cerrá el período y rendí en un click</p></div>
+    </div>
+    <div class="benefit fade-up">
+      <div class="benefit-icon" style="background:rgba(123,63,242,0.18);">🏪</div>
+      <div><h4>Multi-sucursal</h4><p>Gestioná toda tu cadena desde un solo lugar</p></div>
+    </div>
+    <div class="benefit fade-up">
+      <div class="benefit-icon" style="background:rgba(255,77,218,0.18);">🔒</div>
+      <div><h4>Seguro y confiable</h4><p>Datos protegidos, operaciones trazables</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RUBROS -->
+<section id="rubros">
+  <div class="pill-label fade-up">Rubros</div>
+  <h2 class="section-title fade-up">Ideal para tu negocio</h2>
+  <p class="section-sub fade-up">Wyro se adapta a cualquier tipo de comercio</p>
+  <div class="rubros-grid fade-up">
+    <div class="rubro">👗 Indumentaria</div>
+    <div class="rubro">📺 Electrodomésticos</div>
+    <div class="rubro">🛋 Muebles</div>
+    <div class="rubro">🔧 Ferreterías</div>
+    <div class="rubro">👓 Ópticas</div>
+    <div class="rubro">🛠 Servicios</div>
+    <div class="rubro">💻 Tecnología</div>
+    <div class="rubro">🚗 Automotriz</div>
+    <div class="rubro">🏋️ Deportes</div>
+    <div class="rubro">🏗 Construcción</div>
+    <div class="rubro">+ Más rubros</div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section id="precios">
+  <div class="pill-label fade-up">Planes</div>
+  <h2 class="section-title fade-up">Simple y transparente</h2>
+  <p class="section-sub fade-up">Sin costos fijos. Crecés con nosotros.</p>
+  <div class="plans">
+    <div class="plan fade-up">
+      <div class="plan-name">Comercio</div>
+      <div class="plan-price grad-text">Consultá</div>
+      <div class="plan-desc">Plan a medida según tu volumen y rubro</div>
+      <div class="plan-features">
+        <span>Onboarding incluido</span>
+        <span>Soporte dedicado</span>
+        <span>Sin costos fijos</span>
+        <span>Panel de gestión</span>
+      </div>
+    </div>
+    <div class="plan plan-featured fade-up">
+      <div class="plan-name">Multi-sucursal</div>
+      <div class="plan-price grad-text">Consultá</div>
+      <div class="plan-desc">Para cadenas con 2 o más locales</div>
+      <div class="plan-features">
+        <span>Panel centralizado</span>
+        <span>Reportes por sucursal</span>
+        <span>Gestión de usuarios</span>
+        <span>Soporte prioritario</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="pill-label fade-up">Contacto</div>
+  <h2 class="section-title fade-up">Quiero ser comercio Wyro</h2>
+  <p class="section-sub fade-up">Completá el formulario y te contactamos en menos de 24hs.</p>
+  <div class="form-wrapper fade-up" style="margin-top:32px;">
+    <div id="form-content">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre del comercio</label>
+          <input type="text" id="comercio" placeholder="Ej: Ropa El Centro">
+        </div>
+        <div class="form-group">
+          <label>Responsable</label>
+          <input type="text" id="responsable" placeholder="Nombre y apellido">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="comercio@ejemplo.com">
+        </div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" id="telefono" placeholder="+54 11 0000-0000">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Rubro</label>
+          <select id="rubro">
+            <option value="" disabled selected>Seleccioná tu rubro</option>
+            <option>Indumentaria</option>
+            <option>Electrodomésticos</option>
+            <option>Muebles</option>
+            <option>Ferretería</option>
+            <option>Óptica</option>
+            <option>Servicios</option>
+            <option>Tecnología</option>
+            <option>Automotriz</option>
+            <option>Deportes</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Cantidad de sucursales</label>
+          <select id="sucursales">
+            <option value="" disabled selected>Seleccioná</option>
+            <option>1</option>
+            <option>2 – 5</option>
+            <option>6 – 10</option>
+            <option>+10</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-submit" onclick="enviarFormulario()">Enviar solicitud →</button>
+    </div>
+    <div class="success-msg" id="success-msg">
+      <div class="check">✓</div>
+      <h3>¡Solicitud enviada!</h3>
+      <p>Te vamos a contactar en menos de 24hs.<br>También podés escribirnos directo por WhatsApp.</p>
+      <a href="https://wa.me/5491132300112" target="_blank" class="btn-primary" style="margin-top:20px; display:inline-flex;">
+        Ir a WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="wyro-icon.png" alt="Wyro" style="height:28px; width:auto;"><span class="footer-brand">Wyro</span>
+    <span class="footer-slogan">· Tu dinero. Sin vueltas.</span>
+  </div>
+  <div class="footer-copy">© 2026 Wyro. Todos los derechos reservados.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  function enviarFormulario() {
+    const comercio    = document.getElementById('comercio').value.trim();
+    const responsable = document.getElementById('responsable').value.trim();
+    const email       = document.getElementById('email').value.trim();
+    const telefono    = document.getElementById('telefono').value.trim();
+    const rubro       = document.getElementById('rubro').value;
+    const sucursales  = document.getElementById('sucursales').value;
+
+    if (!comercio || !responsable || !email || !telefono || !rubro || !sucursales) {
+      alert('Por favor completá todos los campos.');
+      return;
+    }
+
+    const msg = `Hola! Soy ${responsable} de *${comercio}*.\n\n📋 *Solicitud de comercio Wyro*\n- Responsable: ${responsable}\n- Email: ${email}\n- Teléfono: ${telefono}\n- Rubro: ${rubro}\n- Sucursales: ${sucursales}`;
+    const url = `https://wa.me/5491132300112?text=${encodeURIComponent(msg)}`;
+
+    document.getElementById('form-content').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+    setTimeout(() => { window.open(url, '_blank'); }, 800);
+  }
+</script>
+</body>
+</html>
