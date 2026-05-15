@@ -24,198 +24,124 @@
   ::-webkit-scrollbar-track { background: var(--dark3); }
   ::-webkit-scrollbar-thumb { background: var(--violet); border-radius: 3px; }
 
-  .grad-text {
-    background: linear-gradient(90deg, var(--blue), var(--violet), var(--pink));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  }
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: linear-gradient(90deg, var(--blue), var(--violet));
-    border: none; color: #fff; padding: 13px 26px; border-radius: 10px;
-    font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700;
-    cursor: pointer; text-decoration: none; transition: opacity .2s, transform .15s;
-  }
+  .grad-text { background: linear-gradient(90deg, var(--blue), var(--violet), var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .pill-label { display: inline-block; border: 1px solid rgba(123,63,242,0.45); border-radius: 20px; padding: 5px 18px; font-size: 11px; color: #9B7FFF; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+  .btn-primary { display: flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(90deg, var(--blue), var(--violet)); border: none; color: #fff; padding: 15px 28px; border-radius: 12px; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; text-decoration: none; transition: opacity .2s, transform .15s; width: 100%; }
   .btn-primary:hover { opacity: .9; transform: translateY(-1px); }
-  .btn-outline {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: transparent; border: 1px solid rgba(255,255,255,0.2);
-    color: #fff; padding: 13px 26px; border-radius: 10px;
-    font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 600;
-    cursor: pointer; text-decoration: none; transition: background .2s, transform .15s;
-  }
-  .btn-outline:hover { background: rgba(255,255,255,0.06); transform: translateY(-1px); }
-  .pill-label {
-    display: inline-block; border: 1px solid rgba(123,63,242,0.45);
-    border-radius: 20px; padding: 4px 16px; font-size: 11px; color: #9B7FFF;
-    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px;
-  }
-  .section-title { font-size: 32px; font-weight: 800; line-height: 1.15; }
-  .section-sub { font-size: 15px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+  .btn-outline { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 15px 28px; border-radius: 12px; font-family: 'Satoshi', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: none; transition: background .2s; width: 100%; }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+  .section-title { font-size: 28px; font-weight: 800; line-height: 1.15; }
+  .section-sub { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
 
   /* NAVBAR */
-  #navbar {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(13,18,32,0.88); backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 60px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
+  #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(13,18,32,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; }
   .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo-icon {
-    width: 34px; height: 34px; border-radius: 8px;
-    background: linear-gradient(135deg, var(--blue), var(--violet), var(--pink));
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 900; font-size: 17px; color: #fff;
-  }
+  .nav-logo img { height: 32px; width: auto; }
   .nav-logo-text { font-size: 18px; font-weight: 800; color: #fff; }
   .nav-links { display: flex; gap: 32px; }
   .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; font-weight: 500; transition: color .2s; }
   .nav-links a:hover { color: #fff; }
-  .nav-cta {
-    background: linear-gradient(90deg, var(--blue), var(--violet));
-    border: none; color: #fff; padding: 10px 22px; border-radius: 8px;
-    font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700;
-    cursor: pointer; text-decoration: none; transition: opacity .2s;
-  }
+  .nav-cta { background: linear-gradient(90deg, var(--blue), var(--violet)); border: none; color: #fff; padding: 10px 22px; border-radius: 8px; font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; transition: opacity .2s; }
   .nav-cta:hover { opacity: .85; }
 
   /* HERO */
-  #hero {
-    padding: 160px 60px 90px; text-align: center; position: relative; overflow: hidden;
-  }
-  .hero-glow {
-    position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
-    width: 700px; height: 400px;
-    background: radial-gradient(ellipse at center, rgba(123,63,242,0.18) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-title {
-    font-size: clamp(28px, 8vw, 58px); font-weight: 900; line-height: 1.05; margin-bottom: 6px;
-  }
-  .hero-slogan {
-    font-size: clamp(26px, 7.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 22px;
-    white-space: nowrap;
-  }
-  .hero-slogan .blue { color: var(--blue); }
-  .hero-slogan .violet { color: var(--violet); }
-  .hero-sub { font-size: 17px; color: var(--muted); max-width: 500px; margin: 0 auto 36px; line-height: 1.65; }
-  .hero-btns { display: flex; gap: 14px; justify-content: center; margin-bottom: 56px; }
-  .metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; max-width: 640px; margin: 0 auto; }
-  .metric {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 18px 12px; text-align: center;
-  }
-  .metric-num { font-size: 26px; font-weight: 800; }
-  .metric-lbl { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  #hero { padding: 120px 40px 0; text-align: center; position: relative; overflow: hidden; }
+  .hero-glow { position: absolute; top: -40px; left: 50%; transform: translateX(-50%); width: 400px; height: 260px; background: radial-gradient(ellipse at center, rgba(123,63,242,0.18) 0%, transparent 70%); pointer-events: none; }
+  .hero-title { font-size: clamp(32px, 6vw, 58px); font-weight: 900; line-height: 1.05; margin-bottom: 10px; }
+  .hero-title .blue { color: var(--blue); }
+  .hero-title .violet { color: var(--violet); }
+  .hero-slogan { font-size: clamp(16px, 2.5vw, 22px); font-weight: 700; color: #c0d0ee; margin-bottom: 6px; }
+  .hero-sub { font-size: 15px; color: var(--muted); margin-bottom: 28px; line-height: 1.65; }
+  .hero-btns { display: flex; flex-direction: column; gap: 12px; max-width: 360px; margin: 0 auto 32px; }
+
+  /* CHART */
+  .chart-wrap { position: relative; width: 100%; max-width: 700px; margin: 0 auto; height: 190px; }
+  .chart-tooltip { position: absolute; top: 6px; right: 16px; z-index: 5; background: rgba(14,10,30,0.95); backdrop-filter: blur(8px); border: 1px solid rgba(123,63,242,0.5); border-radius: 10px; padding: 9px 13px; text-align: left; box-shadow: 0 4px 20px rgba(0,0,0,0.5); min-width: 115px; }
+  .chart-tooltip .t-date { font-size: 9px; color: var(--muted); margin-bottom: 3px; }
+  .chart-tooltip .t-val { font-size: 15px; font-weight: 900; color: #fff; }
+  .chart-tooltip .t-pct { font-size: 10px; font-weight: 700; color: #4ADE80; margin-top: 2px; }
+
+  /* METRICS */
+  #metrics { padding: 20px 40px 60px; max-width: 760px; margin: 0 auto; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+  .metric { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px 14px; display: flex; align-items: center; gap: 13px; }
+  .metric-ico { width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0; background: rgba(123,63,242,0.15); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .metric-num { font-size: 20px; font-weight: 900; color: var(--violet); line-height: 1; }
+  .metric-lbl { font-size: 11px; color: var(--muted); margin-top: 3px; font-weight: 500; }
+  .metric-desc { font-size: 10px; color: rgba(136,153,187,0.5); margin-top: 2px; }
+
+  /* TRUST */
+  #trust { padding: 36px 40px; background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); text-align: center; }
+  .trust-label { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+  .trust-logos { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .trust-real { opacity: 0.75; filter: grayscale(20%); transition: opacity .2s; }
+  .trust-real:hover { opacity: 1; }
+  .trust-real img { height: 36px; width: auto; border-radius: 6px; }
+  .trust-generic { font-size: 13px; font-weight: 700; color: var(--muted); padding: 8px 16px; border: 1px solid var(--border); border-radius: 8px; }
 
   /* COMO FUNCIONA */
-  #como-funciona { padding: 80px 60px; background: var(--dark2); }
-  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 36px; }
-  .step {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 28px; transition: border-color .25s, transform .2s;
-  }
+  #como-funciona { padding: 80px 40px; background: var(--dark2); }
+  .section-header { text-align: center; margin-bottom: 44px; }
+  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; max-width: 900px; margin: 0 auto; }
+  .step { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: border-color .25s, transform .2s; }
   .step:hover { border-color: rgba(123,63,242,0.4); transform: translateY(-3px); }
-  .step-num {
-    width: 42px; height: 42px; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; font-weight: 800; margin-bottom: 18px;
-  }
-  .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .step-num { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; margin-bottom: 16px; }
+  .step h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
   .step p { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
   /* BENEFICIOS */
-  #beneficios { padding: 80px 60px; }
-  .benefits { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 36px; }
-  .benefit {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 20px; display: flex; gap: 14px; align-items: flex-start;
-    transition: border-color .25s, transform .2s;
-  }
+  #beneficios { padding: 80px 40px; }
+  .benefits { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; max-width: 900px; margin: 36px auto 0; }
+  .benefit { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; display: flex; gap: 14px; align-items: flex-start; transition: border-color .25s, transform .2s; }
   .benefit:hover { border-color: rgba(123,63,242,0.35); transform: translateY(-2px); }
-  .benefit-icon {
-    width: 40px; height: 40px; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px;
-  }
-  .benefit h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .benefit-icon { width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 17px; }
+  .benefit h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
   .benefit p { font-size: 12px; color: var(--muted); line-height: 1.55; }
 
   /* RUBROS */
-  #rubros { padding: 80px 60px; background: var(--dark2); text-align: center; }
+  #rubros { padding: 80px 40px; background: var(--dark2); text-align: center; }
   .rubros-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 28px; }
-  .rubro {
-    background: rgba(37,99,255,0.08); border: 1px solid rgba(37,99,255,0.22);
-    border-radius: 8px; padding: 10px 20px; font-size: 13px; color: #7B9FFF; font-weight: 500;
-    transition: background .2s, border-color .2s;
-  }
-  .rubro:hover { background: rgba(37,99,255,0.16); border-color: rgba(37,99,255,0.45); }
+  .rubro { background: rgba(37,99,255,0.08); border: 1px solid rgba(37,99,255,0.22); border-radius: 8px; padding: 10px 20px; font-size: 13px; color: #7B9FFF; font-weight: 500; transition: background .2s; }
+  .rubro:hover { background: rgba(37,99,255,0.18); }
 
   /* PRECIOS */
-  #precios { padding: 80px 60px; text-align: center; }
-  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 580px; margin: 36px auto 0; }
-  .plan { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
-  .plan-featured {
-    background: linear-gradient(135deg,rgba(37,99,255,0.12),rgba(123,63,242,0.12));
-    border-color: rgba(123,63,242,0.35);
-  }
+  #precios { padding: 80px 40px; text-align: center; }
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 560px; margin: 36px auto 0; }
+  .plan { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; text-align: left; }
+  .plan-featured { background: linear-gradient(135deg,rgba(37,99,255,0.12),rgba(123,63,242,0.12)); border-color: rgba(123,63,242,0.35); }
   .plan-name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
-  .plan-price { font-size: 30px; font-weight: 900; margin-bottom: 4px; }
-  .plan-desc { font-size: 12px; color: var(--muted); margin-bottom: 18px; line-height: 1.5; }
+  .plan-price { font-size: 26px; font-weight: 900; margin-bottom: 4px; background: linear-gradient(90deg, var(--blue), var(--violet)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .plan-desc { font-size: 12px; color: var(--muted); margin-bottom: 16px; line-height: 1.5; }
   .plan-features { font-size: 12px; color: var(--muted); line-height: 2.2; }
   .plan-features span { display: block; }
   .plan-features span::before { content: "✓ "; color: var(--violet); }
 
   /* CONTACTO */
-  #contacto { padding: 80px 60px; background: var(--dark2); text-align: center; }
-  .form-wrapper {
-    background: rgba(255,255,255,0.035); border: 1px solid var(--border);
-    border-radius: 20px; padding: 40px; max-width: 620px; margin: 0 auto;
-  }
+  #contacto { padding: 80px 40px; background: var(--dark2); text-align: center; }
+  .form-wrapper { background: rgba(255,255,255,0.035); border: 1px solid var(--border); border-radius: 20px; padding: 40px; max-width: 620px; margin: 32px auto 0; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; text-align: left; }
   .form-group label { font-size: 10px; color: var(--muted); letter-spacing: 0.8px; text-transform: uppercase; font-weight: 600; }
-  .form-group input, .form-group select {
-    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 9px; padding: 12px 16px; font-family: 'Satoshi', sans-serif;
-    font-size: 14px; color: #fff; outline: none; transition: border-color .2s; -webkit-appearance: none;
-  }
+  .form-group input, .form-group select { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 9px; padding: 12px 16px; font-family: 'Satoshi', sans-serif; font-size: 14px; color: #fff; outline: none; transition: border-color .2s; -webkit-appearance: none; }
   .form-group input::placeholder { color: rgba(136,153,187,0.5); }
   .form-group input:focus, .form-group select:focus { border-color: var(--violet); }
   .form-group select option { background: #1a2235; color: #fff; }
-  .btn-submit {
-    width: 100%; background: linear-gradient(90deg, var(--blue), var(--violet));
-    border: none; color: #fff; padding: 16px; border-radius: 12px;
-    font-family: 'Satoshi', sans-serif; font-size: 16px; font-weight: 800;
-    cursor: pointer; margin-top: 8px; transition: opacity .2s, transform .15s;
-  }
+  .btn-submit { width: 100%; background: linear-gradient(90deg, var(--blue), var(--violet)); border: none; color: #fff; padding: 16px; border-radius: 12px; font-family: 'Satoshi', sans-serif; font-size: 16px; font-weight: 800; cursor: pointer; margin-top: 8px; transition: opacity .2s, transform .15s; }
   .btn-submit:hover { opacity: .9; transform: translateY(-1px); }
   .success-msg { display: none; text-align: center; padding: 32px; }
-  .success-msg .check {
-    width: 60px; height: 60px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--blue), var(--violet));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px; margin: 0 auto 16px;
-  }
+  .success-msg .check { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--violet)); display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px; }
   .success-msg h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
   .success-msg p { font-size: 14px; color: var(--muted); }
 
   /* FOOTER */
-  footer {
-    background: var(--dark3); border-top: 1px solid var(--border);
-    padding: 28px 60px; display: flex; align-items: center; justify-content: space-between;
-  }
+  footer { background: var(--dark3); border-top: 1px solid var(--border); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; }
   .footer-logo { display: flex; align-items: center; gap: 10px; }
-  .footer-logo-icon {
-    width: 28px; height: 28px; border-radius: 6px;
-    background: linear-gradient(135deg, var(--blue), var(--violet));
-    display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px;
-  }
+  .footer-logo img { height: 26px; width: auto; }
   .footer-brand { font-size: 15px; font-weight: 800; }
   .footer-slogan { font-size: 12px; color: var(--muted); margin-left: 8px; }
   .footer-copy { font-size: 11px; color: var(--muted); }
 
-  /* FADE IN */
+  /* FADE */
   .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
 
@@ -223,30 +149,30 @@
   @media (max-width: 600px) {
     #navbar { padding: 12px 20px; }
     .nav-links { display: none; }
-    #hero { padding: 110px 20px 48px; }
-    .hero-title { font-size: clamp(26px, 9vw, 38px); }
-    .hero-slogan { font-size: clamp(24px, 8.5vw, 36px); white-space: nowrap; }
-    .hero-sub { font-size: 14px; }
-    .hero-btns { flex-direction: column; align-items: stretch; gap: 10px; }
-    .btn-primary, .btn-outline { width: 100%; justify-content: center; }
-    .metrics { grid-template-columns: repeat(2,1fr); gap: 10px; max-width: 100%; }
-    .metric-num { font-size: 20px; }
-    #como-funciona, #beneficios, #rubros, #precios, #contacto { padding: 52px 20px; }
+    #hero { padding: 100px 20px 0; }
+    .hero-btns { max-width: 100%; }
+    #metrics { padding: 16px 20px 48px; }
+    .metrics-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+    .metric-num { font-size: 17px; }
+    #trust, #como-funciona, #beneficios, #rubros, #precios, #contacto { padding: 52px 20px; }
     .section-title { font-size: 22px; }
-    .steps { grid-template-columns: 1fr; gap: 12px; }
-    .benefits { grid-template-columns: 1fr; gap: 10px; }
+    .steps { grid-template-columns: 1fr; }
+    .benefits { grid-template-columns: 1fr; }
     .plans { grid-template-columns: 1fr; max-width: 100%; }
     .form-row { grid-template-columns: 1fr; }
     .form-wrapper { padding: 24px 16px; }
     footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 20px; }
     .footer-slogan { display: none; }
+    .chart-tooltip { right: 8px; }
   }
 
-  /* TABLET / NOTEBOOK */
+  /* TABLET */
   @media (min-width: 601px) and (max-width: 1024px) {
-    #navbar { padding: 14px 36px; }
-    #hero { padding: 130px 36px 64px; }
-    #como-funciona, #beneficios, #rubros, #precios, #contacto { padding: 68px 36px; }
+    #navbar { padding: 14px 32px; }
+    #hero { padding: 120px 32px 0; }
+    #metrics { padding: 16px 32px 52px; }
+    #trust, #como-funciona, #beneficios, #rubros, #precios, #contacto { padding: 68px 32px; }
+    .metrics-grid { grid-template-columns: repeat(2,1fr); }
   }
 </style>
 </head>
@@ -255,7 +181,8 @@
 <!-- NAVBAR -->
 <nav id="navbar">
   <a href="#hero" class="nav-logo">
-    <img src="wyro-icon.png" alt="Wyro" style="height:34px; width:auto;"><span class="nav-logo-text">Wyro</span>
+    <img src="wyro-icon.png" alt="Wyro">
+    <span class="nav-logo-text">Wyro</span>
   </a>
   <div class="nav-links">
     <a href="#como-funciona">Cómo funciona</a>
@@ -268,41 +195,124 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-glow"></div>
-  <div class="pill-label fade-up">Fintech para comercios</div>
-  <h1 class="hero-title fade-up">Potenciá tus ventas.</h1>
-  <h2 class="hero-slogan fade-up">
-    <span class="blue">Tu dinero.</span>&nbsp;<span class="violet">Sin vueltas.</span>
-  </h2>
-  <p class="hero-sub fade-up">
-    Créditos en cuotas para tu comercio. Solo con DNI.
-  </p>
-  <div class="hero-btns fade-up">
-    <a href="#contacto" class="btn-primary">Quiero ser comercio →</a>
-    <a href="#como-funciona" class="btn-outline">Ver cómo funciona</a>
+  <div style="position:relative; z-index:2;">
+    <h1 class="hero-title fade-up">
+      Escalá tu negocio<br>
+      <span class="blue">con</span> <span class="violet">Wyro</span>
+    </h1>
+    <p class="hero-slogan fade-up">Tu dinero. Sin vueltas.</p>
+    <p class="hero-sub fade-up">Créditos en cuotas para tus clientes. Solo con DNI.</p>
+    <div class="hero-btns fade-up">
+      <a href="#contacto" class="btn-primary">Quiero ser comercio →</a>
+      <a href="#como-funciona" class="btn-outline">Ver cómo funciona</a>
+    </div>
   </div>
-  <div class="metrics fade-up">
-    <div class="metric">
-      <div class="metric-num" style="color:#7B3FF2;">+500</div>
-      <div class="metric-lbl">Créditos activos</div>
+
+  <!-- CHART -->
+  <div class="chart-wrap fade-up">
+    <div class="chart-tooltip">
+      <div class="t-date">Jun 2026</div>
+      <div class="t-val">+$57.4M</div>
+      <div class="t-pct">↑ +42% vs Ene</div>
     </div>
-    <div class="metric">
-      <div class="metric-num" style="color:#7B3FF2;">$100M+</div>
-      <div class="metric-lbl">Créditos otorgados</div>
-    </div>
-    <div class="metric">
-      <div class="metric-num" style="color:#7B3FF2;">3–12</div>
-      <div class="metric-lbl">Cuotas disponibles</div>
-    </div>
-    <div class="metric">
-      <div class="metric-num" style="color:#7B3FF2;">100%</div>
-      <div class="metric-lbl">Digital</div>
-    </div>
+    <svg width="100%" height="190" viewBox="0 0 700 190" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="lineG" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#2563FF;stop-opacity:0.8"/>
+          <stop offset="50%" style="stop-color:#7B3FF2"/>
+          <stop offset="100%" style="stop-color:#9B6FFF"/>
+        </linearGradient>
+        <linearGradient id="fillG" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#7B3FF2;stop-opacity:0.25"/>
+          <stop offset="100%" style="stop-color:#2563FF;stop-opacity:0"/>
+        </linearGradient>
+        <radialGradient id="dotG" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" style="stop-color:#7B3FF2;stop-opacity:0.55"/>
+          <stop offset="100%" style="stop-color:#7B3FF2;stop-opacity:0"/>
+        </radialGradient>
+      </defs>
+      <!-- grilla -->
+      <line x1="0" y1="45"  x2="700" y2="45"  stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+      <line x1="0" y1="90"  x2="700" y2="90"  stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+      <line x1="0" y1="135" x2="700" y2="135" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+      <line x1="116" y1="0" x2="116" y2="165" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      <line x1="233" y1="0" x2="233" y2="165" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      <line x1="350" y1="0" x2="350" y2="165" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      <line x1="466" y1="0" x2="466" y2="165" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      <line x1="583" y1="0" x2="583" y2="165" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      <!-- área -->
+      <path d="M0,150 C30,148 50,152 84,144 C114,137 130,128 166,120 C196,113 214,122 248,113 C280,104 296,90 334,82 C366,75 386,85 420,76 C454,67 470,52 508,44 C542,37 562,46 597,39 C626,33 658,27 700,24 L700,165 L0,165 Z" fill="url(#fillG)"/>
+      <!-- línea -->
+      <path d="M0,150 C30,148 50,152 84,144 C114,137 130,128 166,120 C196,113 214,122 248,113 C280,104 296,90 334,82 C366,75 386,85 420,76 C454,67 470,52 508,44 C542,37 562,46 597,39 C626,33 658,27 700,24" fill="none" stroke="url(#lineG)" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- línea punteada vertical -->
+      <line x1="700" y1="24" x2="700" y2="165" stroke="#7B3FF2" stroke-width="1" stroke-dasharray="3,4" opacity="0.3"/>
+      <!-- punto -->
+      <circle cx="700" cy="24" r="16" fill="url(#dotG)"/>
+      <circle cx="700" cy="24" r="5"  fill="#7B3FF2"/>
+      <circle cx="700" cy="24" r="2.5" fill="#fff" opacity="0.95"/>
+      <!-- meses -->
+      <text x="10"  y="180" font-size="11" fill="#556677" font-family="Satoshi,sans-serif">Ene</text>
+      <text x="120" y="180" font-size="11" fill="#556677" font-family="Satoshi,sans-serif">Feb</text>
+      <text x="237" y="180" font-size="11" fill="#556677" font-family="Satoshi,sans-serif">Mar</text>
+      <text x="354" y="180" font-size="11" fill="#556677" font-family="Satoshi,sans-serif">Abr</text>
+      <text x="470" y="180" font-size="11" fill="#556677" font-family="Satoshi,sans-serif">May</text>
+      <text x="587" y="180" font-size="11" fill="#556677" font-family="Satoshi,sans-serif">Jun</text>
+    </svg>
   </div>
 </section>
 
+<!-- METRICS -->
+<div id="metrics">
+  <div class="metrics-grid fade-up">
+    <div class="metric">
+      <div class="metric-ico">💳</div>
+      <div>
+        <div class="metric-num">+500</div>
+        <div class="metric-lbl">Créditos activos</div>
+        <div class="metric-desc">Comercios que confían.</div>
+      </div>
+    </div>
+    <div class="metric">
+      <div class="metric-ico">💰</div>
+      <div>
+        <div class="metric-num">+$100M</div>
+        <div class="metric-lbl">En créditos otorgados</div>
+        <div class="metric-desc">Impulsamos tu negocio.</div>
+      </div>
+    </div>
+    <div class="metric">
+      <div class="metric-ico">📅</div>
+      <div>
+        <div class="metric-num">3 a 12</div>
+        <div class="metric-lbl">Cuotas disponibles</div>
+        <div class="metric-desc">Planes flexibles.</div>
+      </div>
+    </div>
+    <div class="metric">
+      <div class="metric-ico">⚡</div>
+      <div>
+        <div class="metric-num" style="font-size:16px;">Aprobación</div>
+        <div class="metric-lbl">Inmediata</div>
+        <div class="metric-desc">En segundos.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST -->
+<div id="trust">
+  <p class="trust-label">Con la confianza de comercios en todo el país.</p>
+  <div class="trust-logos">
+    <div class="trust-real"><img src="giadonai.jpeg" alt="Giadonai Construcciones"></div>
+    <div class="trust-generic">TechStore</div>
+    <div class="trust-generic">ModaBA</div>
+    <div class="trust-generic">HogarPlus</div>
+  </div>
+</div>
+
 <!-- COMO FUNCIONA -->
 <section id="como-funciona">
-  <div style="text-align:center;">
+  <div class="section-header">
     <div class="pill-label fade-up">Cómo funciona</div>
     <h2 class="section-title fade-up">Simple para vos. Simple para tu cliente.</h2>
   </div>
@@ -327,43 +337,27 @@
 
 <!-- BENEFICIOS -->
 <section id="beneficios">
-  <div style="text-align:center;">
+  <div class="section-header">
     <div class="pill-label fade-up">Beneficios</div>
     <h2 class="section-title fade-up">Todo lo que necesitás para crecer</h2>
   </div>
   <div class="benefits">
-    <div class="benefit fade-up">
-      <div class="benefit-icon" style="background:rgba(37,99,255,0.18);">🪪</div>
-      <div><h4>Solo con DNI</h4><p>Sin tarjeta de crédito ni cuenta bancaria</p></div>
-    </div>
-    <div class="benefit fade-up">
-      <div class="benefit-icon" style="background:rgba(123,63,242,0.18);">📱</div>
-      <div><h4>100% digital</h4><p>Gestión completa desde cualquier dispositivo</p></div>
-    </div>
-    <div class="benefit fade-up">
-      <div class="benefit-icon" style="background:rgba(255,77,218,0.18);">⚡</div>
-      <div><h4>Aprobación inmediata</h4><p>En segundos, sin esperar días</p></div>
-    </div>
-    <div class="benefit fade-up">
-      <div class="benefit-icon" style="background:rgba(37,99,255,0.18);">📊</div>
-      <div><h4>Rendiciones automáticas</h4><p>Cerrá el período y rendí en un click</p></div>
-    </div>
-    <div class="benefit fade-up">
-      <div class="benefit-icon" style="background:rgba(123,63,242,0.18);">🏪</div>
-      <div><h4>Multi-sucursal</h4><p>Gestioná toda tu cadena desde un solo lugar</p></div>
-    </div>
-    <div class="benefit fade-up">
-      <div class="benefit-icon" style="background:rgba(255,77,218,0.18);">🔒</div>
-      <div><h4>Seguro y confiable</h4><p>Datos protegidos, operaciones trazables</p></div>
-    </div>
+    <div class="benefit fade-up"><div class="benefit-icon" style="background:rgba(37,99,255,0.18);">🪪</div><div><h4>Solo con DNI</h4><p>Sin tarjeta de crédito ni cuenta bancaria</p></div></div>
+    <div class="benefit fade-up"><div class="benefit-icon" style="background:rgba(123,63,242,0.18);">📱</div><div><h4>100% digital</h4><p>Gestión completa desde cualquier dispositivo</p></div></div>
+    <div class="benefit fade-up"><div class="benefit-icon" style="background:rgba(255,77,218,0.18);">⚡</div><div><h4>Aprobación inmediata</h4><p>En segundos, sin esperar días</p></div></div>
+    <div class="benefit fade-up"><div class="benefit-icon" style="background:rgba(37,99,255,0.18);">📊</div><div><h4>Rendiciones automáticas</h4><p>Cerrá el período y rendí en un click</p></div></div>
+    <div class="benefit fade-up"><div class="benefit-icon" style="background:rgba(123,63,242,0.18);">🏪</div><div><h4>Multi-sucursal</h4><p>Gestioná toda tu cadena desde un solo lugar</p></div></div>
+    <div class="benefit fade-up"><div class="benefit-icon" style="background:rgba(255,77,218,0.18);">🔒</div><div><h4>Seguro y confiable</h4><p>Datos protegidos, operaciones trazables</p></div></div>
   </div>
 </section>
 
 <!-- RUBROS -->
 <section id="rubros">
-  <div class="pill-label fade-up">Rubros</div>
-  <h2 class="section-title fade-up">Ideal para tu negocio</h2>
-  <p class="section-sub fade-up">Wyro se adapta a cualquier tipo de comercio</p>
+  <div class="section-header">
+    <div class="pill-label fade-up">Rubros</div>
+    <h2 class="section-title fade-up">Ideal para tu negocio</h2>
+    <p class="section-sub fade-up">Wyro se adapta a cualquier tipo de comercio</p>
+  </div>
   <div class="rubros-grid fade-up">
     <div class="rubro">👗 Indumentaria</div>
     <div class="rubro">📺 Electrodomésticos</div>
@@ -381,13 +375,15 @@
 
 <!-- PRECIOS -->
 <section id="precios">
-  <div class="pill-label fade-up">Planes</div>
-  <h2 class="section-title fade-up">Simple y transparente</h2>
-  <p class="section-sub fade-up">Sin costos fijos. Crecés con nosotros.</p>
+  <div class="section-header">
+    <div class="pill-label fade-up">Planes</div>
+    <h2 class="section-title fade-up">Simple y transparente</h2>
+    <p class="section-sub fade-up">Sin costos fijos. Crecés con nosotros.</p>
+  </div>
   <div class="plans">
     <div class="plan fade-up">
       <div class="plan-name">Comercio</div>
-      <div class="plan-price grad-text">Consultá</div>
+      <div class="plan-price">Consultá</div>
       <div class="plan-desc">Plan a medida según tu volumen y rubro</div>
       <div class="plan-features">
         <span>Onboarding incluido</span>
@@ -398,7 +394,7 @@
     </div>
     <div class="plan plan-featured fade-up">
       <div class="plan-name">Multi-sucursal</div>
-      <div class="plan-price grad-text">Consultá</div>
+      <div class="plan-price">Consultá</div>
       <div class="plan-desc">Para cadenas con 2 o más locales</div>
       <div class="plan-features">
         <span>Panel centralizado</span>
@@ -415,27 +411,15 @@
   <div class="pill-label fade-up">Contacto</div>
   <h2 class="section-title fade-up">Quiero ser comercio Wyro</h2>
   <p class="section-sub fade-up">Completá el formulario y te contactamos en menos de 24hs.</p>
-  <div class="form-wrapper fade-up" style="margin-top:32px;">
+  <div class="form-wrapper fade-up">
     <div id="form-content">
       <div class="form-row">
-        <div class="form-group">
-          <label>Nombre del comercio</label>
-          <input type="text" id="comercio" placeholder="Ej: Ropa El Centro">
-        </div>
-        <div class="form-group">
-          <label>Responsable</label>
-          <input type="text" id="responsable" placeholder="Nombre y apellido">
-        </div>
+        <div class="form-group"><label>Nombre del comercio</label><input type="text" id="comercio" placeholder="Ej: Ropa El Centro"></div>
+        <div class="form-group"><label>Responsable</label><input type="text" id="responsable" placeholder="Nombre y apellido"></div>
       </div>
       <div class="form-row">
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" id="email" placeholder="comercio@ejemplo.com">
-        </div>
-        <div class="form-group">
-          <label>Teléfono</label>
-          <input type="tel" id="telefono" placeholder="+54 11 0000-0000">
-        </div>
+        <div class="form-group"><label>Email</label><input type="email" id="email" placeholder="comercio@ejemplo.com"></div>
+        <div class="form-group"><label>Teléfono</label><input type="tel" id="telefono" placeholder="+54 11 0000-0000"></div>
       </div>
       <div class="form-row">
         <div class="form-group">
@@ -451,6 +435,7 @@
             <option>Tecnología</option>
             <option>Automotriz</option>
             <option>Deportes</option>
+            <option>Construcción</option>
             <option>Otro</option>
           </select>
         </div>
@@ -471,9 +456,7 @@
       <div class="check">✓</div>
       <h3>¡Solicitud enviada!</h3>
       <p>Te vamos a contactar en menos de 24hs.<br>También podés escribirnos directo por WhatsApp.</p>
-      <a href="https://wa.me/5491132300112" target="_blank" class="btn-primary" style="margin-top:20px; display:inline-flex;">
-        Ir a WhatsApp
-      </a>
+      <a href="https://wa.me/5491132300112" target="_blank" class="btn-primary" style="margin-top:20px;">Ir a WhatsApp</a>
     </div>
   </div>
 </section>
@@ -481,7 +464,8 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <img src="wyro-icon.png" alt="Wyro" style="height:28px; width:auto;"><span class="footer-brand">Wyro</span>
+    <img src="wyro-icon.png" alt="Wyro">
+    <span class="footer-brand">Wyro</span>
     <span class="footer-slogan">· Tu dinero. Sin vueltas.</span>
   </div>
   <div class="footer-copy">© 2026 Wyro. Todos los derechos reservados.</div>
@@ -500,15 +484,12 @@
     const telefono    = document.getElementById('telefono').value.trim();
     const rubro       = document.getElementById('rubro').value;
     const sucursales  = document.getElementById('sucursales').value;
-
     if (!comercio || !responsable || !email || !telefono || !rubro || !sucursales) {
       alert('Por favor completá todos los campos.');
       return;
     }
-
     const msg = `Hola! Soy ${responsable} de *${comercio}*.\n\n📋 *Solicitud de comercio Wyro*\n- Responsable: ${responsable}\n- Email: ${email}\n- Teléfono: ${telefono}\n- Rubro: ${rubro}\n- Sucursales: ${sucursales}`;
     const url = `https://wa.me/5491132300112?text=${encodeURIComponent(msg)}`;
-
     document.getElementById('form-content').style.display = 'none';
     document.getElementById('success-msg').style.display = 'block';
     setTimeout(() => { window.open(url, '_blank'); }, 800);
